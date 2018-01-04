@@ -1,0 +1,9 @@
+/dist
+/node_modules
+.DS_Store
+.idea/
+yarn-error.log
+.vscode
+vscode
+disk
+yarn.lock
