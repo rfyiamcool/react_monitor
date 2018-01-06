@@ -1,14 +1,14 @@
 {
-  "name": "auto_deploy_ui",
+  "name": "cdn_monitor_dashboard",
   "version": "1.0.0",
-  "description": "sinobbd auto deploy ui",
+  "description": "cdn monitor",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --progress --config webpack/dev.js --port 8811 --host 0.0.0.0",
     "build": "webpack --progress --config webpack/prod.js -p"
   },
-  "repository": "http://git.sinobbd.com:81/DevOps/auto_deploy_ui",
-  "author": "zhanghn",
+  "repository": "",
+  "author": "ruifengyun",
   "license": "MIT",
   "private": true,
   "devDependencies": {
