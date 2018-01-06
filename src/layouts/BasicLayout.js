@@ -23,11 +23,7 @@ import {
   getDomainProvinceIPList,
 } from '../services/api';
 
-import Release from '../components/Release/Release';
-import ReleaseList from '../components/Release/ReleaseList';
-import Process from '../components/Process/Process';
-import ProcessList from '../components/Process/ProcessList';
-import FileList from "../components/File/FileList";
+
 import HostList from '../components/Host/HostList';
 import BadNodeList from '../components/Host/BadNode';
 import IPList from '../components/Host/IPList';
@@ -153,12 +149,6 @@ class BasicLayout extends Component {
           </Header>
           <Content style={{ margin: '0 16px' }}>
             <Switch>
-              <Route path="/release_manage/process/:process_id/:step_index" component={Process} />
-              <Route path="/release_manage/process/:process_id" component={Process} />
-              <Route path="/release_manage/process" component={ProcessList} />
-              <Route path="/release_manage/common/:release_id" component={Release} />
-              <Route path="/release_manage/common" component={ReleaseList} />
-              <Route path="/file_manage" component={FileList} />
               <Route path="/host_manage/host" component={HostList} />
               <Route path="/ip_manage/ip" component={IPList} />
               <Route path="/show/bad_nodes" component={BadNodeList} />

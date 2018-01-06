@@ -122,14 +122,22 @@ export function getHostGroupSelectDataApi() {
   return request(`${API_ROOT}/host/all_for_select`);
 }
 
-// api: 2.1
+// 2.1
 export function fetchIPList(start, length, province, isp, word) {
-  return request(`${API_ROOT}/dashboard/v1/customer_ips?start=${start}&length=${length}&searchword=${word}&province=${province}&isp=${isp}`, {
+  let url = `${API_ROOT}/dashboard/v1/customer_ips?start=${start}&length=${length}&searchword=${word}`
+  if (province != "all"){
+    url += `&province=${province}`
+  }
+  if (isp != "all"){
+    url += `&isp=${isp}`
+  }
+
+  return request(url, {
     method: 'GET'
   });
 }
 
-// api: 2.9
+// doc: api: 2.9
 export function fetchIpHistory(ip, startTime, endTime) {
   return request(`${API_ROOT}/dashboard/v1/ips/${ip}/history_quality?start_date=${startTime}&end_date=${endTime}`, {
     method: 'GET'
@@ -144,7 +152,7 @@ export function fetchDomainHistory(domain, province, isp, startTime, endTime) {
   });
 }
 
-// api: 2.7
+// doc: api: 2.7
 export function fetchInfoByDomain(domain, province, isp) {
   return request(`${API_ROOT}/dashboard/v1/domains/${domain}/ip?province=${province}&isp=${isp}`, {
     method: 'GET'
@@ -157,3 +165,6 @@ export function getDomainProvinceIPList(domain, province, isp) {
   });
 }
 
+// export function getFileMetaList(params) {
+//   return request(`${API_ROOT}/file_meta?${stringify(params)}`);
+// }
