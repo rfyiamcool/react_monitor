@@ -9,6 +9,8 @@ import {
   GET_HOST_GORUP_HOST_RELATION_SELECT_DATA,
 } from '../../actionTypes';
 
+import './style.less';
+
 import {
   getHostSelectDataApi,
   getHostListApi,
@@ -85,17 +87,17 @@ class IPList extends Component {
     this.state = {
       tableLoading: false,
       pageNum: 1,
-      pageSize: 10,
+      pageSize: 15,
       hostCount: 0,
 
       hostList: [],
       visible: false,
-      title: '',
+      title: 'IP资源',
       currentId: 0,
       start: 0,
 
-      isp: '联通',
-      province: '北京',
+      isp: 'all',
+      province: 'all',
       searchword: ''
     }
     
@@ -107,7 +109,6 @@ class IPList extends Component {
   }
 
   getIPList = async (start = 0, length = this.state.pageSize, province=null, isp=null, searchword = null) => {
-    console.log(103);
     if (searchword === null) {
       searchword = this.state.searchword;
     }
@@ -124,7 +125,7 @@ class IPList extends Component {
 
     this.setState({
       hostList: resp.ip_list,
-      hostCount: 10,
+      hostCount: resp.total_count,
       tableLoading: false,
     })
   }
@@ -157,8 +158,6 @@ class IPList extends Component {
       this.state.isp,
       this.state.searchword,
     );
-
-    console.log("req");
   }
 
   render() {
@@ -176,6 +175,7 @@ class IPList extends Component {
               this.setState({ province: value });
             }}
           >
+              <Option key="all" value="all">all</Option>
               <Option key="上海" value="上海">上海</Option>
               <Option key="云南" value="云南">云南</Option>
               <Option key="北京" value="北京">北京</Option>
@@ -217,14 +217,14 @@ class IPList extends Component {
               this.setState({ isp: value });
             }}
           >
+                <Option key="all" value="all">all</Option>
                 <Option key="联通" value="联通">联通</Option>
                 <Option key="电信" value="电信">电信</Option>
                 <Option key="移动" value="移动">移动</Option>
           </Select>
 
-          <label style={mgnB8} >IP:</label>
+          <label style={{ width: 200, marginRight: 16 }} >IP:</label>
           <Search className="search" onChange={(e) => {
-            console.log(221, e.target.value);
             this.setState({ searchword: e.target.value});
           }} />
           <Button type="primary" onClick={this.onClickSearch}>
