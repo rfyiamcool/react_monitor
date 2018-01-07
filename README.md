@@ -1,6 +1,13 @@
 # react_monitor
 
-使用react antd ui开发的cdn节点质量查询的dashboard.
+使用react、antd开发的cdn节点质量的dashboard.
+
+支持:
+
+* 探测IP管理
+* 域名管理
+* 折线图
+* 全国地图
 
 ![](docs/map.png)
 ![](docs/line.png)
